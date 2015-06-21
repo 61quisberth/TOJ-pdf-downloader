@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# sample url to test
+IN="https://uva.onlinejudge.org/external/1/103.pdf"
+
+# prase string with tr (for url use)
+# source: http://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash
+arr=$(echo $IN | tr "/" "\n")
+ 
+# print out parsed string
+#echo "prased string $arr"
+
+# loop through parsed string
+for x in $arr
+do
+    # Test for parsed string's 
+    if [ "$(echo $x | grep 'pdf')" != "" ]
+    then
+      echo $(echo $x | grep 'pdf') 
+      pdf_filename $(echo $x | grep 'pdf') 
+      curl $IN > pdf_filename
+    fi
+done
