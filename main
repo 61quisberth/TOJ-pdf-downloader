@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # sample url to test
-IN="https://uva.onlinejudge.org/external/1/103.pdf"
+IN="https://uva.onlinejudge.org/external/1/101.pdf"
 
 # prase string with tr (for url use)
 # source: http://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash
@@ -16,8 +16,9 @@ do
     # Test for parsed string's 
     if [ "$(echo $x | grep 'pdf')" != "" ]
     then
-      echo $(echo $x | grep 'pdf') 
-      pdf_filename $(echo $x | grep 'pdf') 
-      curl $IN > pdf_filename
+      #echo $(echo $x | grep 'pdf') 
+      pdf_filename=$(echo $x | grep 'pdf') 
+      #echo $pdf_filename
+      curl $IN > $pdf_filename
     fi
 done
